@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/ideegeo/epp-reg/issues"
   },
-  "homepage": "https://github.com/ideegeo/epp-reg"
+  "homepage": "https://github.com/ideegeo/epp-reg",
+  "dependencies": {
+    "amqp-as-promised": "^0.1.4",
+    "nconf": "^0.6.9"
+  }
 }
