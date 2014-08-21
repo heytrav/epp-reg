@@ -1,0 +1,26 @@
+{
+  "name": "epp-reg",
+  "version": "0.0.1",
+  "description": "Prototype for EPP registration backend to help with accreditation testing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ideegeo/epp-reg.git"
+  },
+  "keywords": [
+    "epp",
+    "domain",
+    "client",
+    "registration",
+    "backend"
+  ],
+  "author": "William Travis Holton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ideegeo/epp-reg/issues"
+  },
+  "homepage": "https://github.com/ideegeo/epp-reg"
+}
