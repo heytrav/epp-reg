@@ -41,7 +41,6 @@ in our backend system in the future sometime.
 Please see the ```ideegeo/nodepp``` repository for a detailed description of
 commands.
 
-
 Note that all commands return a *promise* object.
 
 
