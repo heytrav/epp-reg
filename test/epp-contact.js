@@ -13,15 +13,6 @@ describe("Contact creation", function() {
     before(function() {
         eppCommander = new EppCommander('hexonet-test1');
     });
-    var processResult = function(data) {
-        if (data.result && data.result.code) {
-            var code = data.result.code;
-            if (code >= 2000) {
-                throw data; //new Error("EPP Exception");
-            }
-        }
-        return data;
-    };
     it('should create a contact', function(done) {
         var contactId = ['iwmn', moment().unix()].join('-');
 
@@ -47,9 +38,8 @@ describe("Contact creation", function() {
             }]
         };
 
-        eppCommander.createContact(contactData).then(function(successfulResult) {
-            return processResult(successfulResult);
-        }).then(function(data) {
+        eppCommander.createContact(contactData).then(function(data) {
+            console.log("successful contact creation: ", data);
             try {
                 expect(data).to.have.deep.property('result');
                 done();
@@ -58,7 +48,13 @@ describe("Contact creation", function() {
             }
         },
         function(error) {
-            console.error("This shouldn't happen");
+            try { // force test to fail if this executes
+                expect(true).to.equal(false);
+                done();
+
+            } catch(e) {
+                done(e);
+            }
         });
 
     });
@@ -67,8 +63,9 @@ describe("Contact creation", function() {
         var contactId = ['iwmn', moment().unix()].join('-');
 
         var contactData = {
+            // bogus id that already exists. We just want the registry to
+            // throw an error
             "id": 'auto',
-            // bogus id
             "voice": "+1.9405551234",
             "fax": "+1.9405551233",
             "email": "john.doe@null.com",
@@ -90,11 +87,16 @@ describe("Contact creation", function() {
         };
 
         eppCommander.createContact(contactData).then(function(data) {
-            return processResult(data);
-        }).then(function(data) {
             console.log("Successful result shouldn't happen");
+            try { // force test to fail if this executes
+                expect(true).to.equal(false);
+                done();
+            } catch(e) {
+                done(e);
+            }
         },
         function(error) {
+            console.log("Error received: ", error);
             try {
                 expect(error).to.have.deep.property('result');
                 expect(error.result.code).to.be.gt(2000);
