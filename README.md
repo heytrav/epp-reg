@@ -51,10 +51,10 @@ environments.
 
 # Dependencies
 
-    1.  A local instance of RabbitMQ. By default the configuration assumes
-        this is accesible at ```devel.iwantmyname.com```
-    2.  ```nodepp``` installed and running. Commands are sent directly over
-        nodepp to the registry.
+1.  A local instance of RabbitMQ. By default the configuration assumes
+    this is accesible at ```devel.iwantmyname.com```
+2.  ```nodepp``` installed and running. Commands are sent directly over
+    nodepp to the registry.
 
 
 
