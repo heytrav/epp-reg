@@ -10,17 +10,19 @@ var EppCommander = require('../lib/epp-commander.js');
 describe('Hexonet scenarios', function() {
 	var eppCommander;
 	var registrant, tech, admin, billing;
-	var registrantId;
-	var techId = 'hex1-tech',
-	billingId = 'hex1-billing',
-	adminId = 'hex1-admin';
+	var registrantId, updateRegistrantId, updateBillingId;
+	var techId = 'iwmn-hex1-tech',
+	billingId = 'iwmn-hex1-billing',
+    updateBillingId = 'iwmn-hex1-billing2'
+	adminId = 'iwmn-hex1-admin';
+    var domain = ['iwmn', moment().unix(), 'test.com'].join('-');
 
 	beforeEach(function() {
 		eppCommander = new EppCommander('hexonet-test1');
 	});
 	it('should check for and then create a regular contact', function(done) {
 		this.timeout(10000);
-		registrantId = ['iwmn', moment().unix()].join('-');
+        registrantId = ['iwmn', moment().unix()].join('-');
 		var contactData = {
 			"id": registrantId,
 			"voice": "+1.9405551234",
@@ -66,7 +68,7 @@ describe('Hexonet scenarios', function() {
 			done(error);
 		});
 	});
-	it('should create if billing contact exists', function(done) {
+	it('should check if billing contact exists', function(done) {
 		this.timeout(10000);
 		billingId = 'iwmn-hex1-billing';
 		var contactData = {
@@ -85,7 +87,6 @@ describe('Hexonet scenarios', function() {
 	});
 	it('should check if tech contact exists', function(done) {
 		this.timeout(10000);
-		techId = 'iwmn-hex1-tech';
 		var contactData = {
 			"id": techId,
 		};
@@ -100,9 +101,8 @@ describe('Hexonet scenarios', function() {
 			}
 		});
 	});
-	it('should create a admin contact', function(done) {
+	it('should check if admin contact exists', function(done) {
 		this.timeout(10000);
-		adminId = 'iwmn-hex1-admin';
 		var contactData = {
 			"id": adminId,
 		};
@@ -119,7 +119,6 @@ describe('Hexonet scenarios', function() {
 	});
 	it('should create a domain with contacts', function(done) {
         this.timeout(10000);
-		var domain = ['iwmn', moment().unix(), 'test.com'].join('-');
         eppCommander.checkDomain({"domain": domain}).then(function(data) {
             var createDomain = {
                 "name": domain,
@@ -127,7 +126,7 @@ describe('Hexonet scenarios', function() {
                     "unit": "y",
                     "value": 1
                 },
-                "ns": ["ns1.hexonet.net", "ns2.hexonet.net"],
+                "ns": ["ns1.hexonet.net", "ns2.hexonet.net", "ns3.hexonet.net"],
                 "registrant":registrantId,
                 "contact": [
                     { "admin": adminId },
@@ -148,5 +147,92 @@ describe('Hexonet scenarios', function() {
             });
         });
 	});
+
+	it('should check for and then create a different contact', function(done) {
+		this.timeout(10000);
+		updateRegistrantId = ['iwmn', moment().unix()].join('-');
+		var contactData = {
+			"id": updateRegistrantId,
+			"voice": "+1.9405551234",
+			"fax": "+1.9405551233",
+			"email": "test+marge@ideegeo.com",
+			"authInfo": {
+				"pw": "xyz123"
+			},
+			"postalInfo": [{
+				"name": "Marge Simpson",
+				"type": "int",
+				"addr": [{
+					"street": ["742 Evergreen Terrace", "Apt b"],
+					"city": "Springfield",
+					"sp": "OR",
+					"pc": "97801",
+					"cc": "US"
+				}]
+			}]
+		};
+		eppCommander.checkContact({
+			"id": updateRegistrantId
+		}).then(function(data) {
+			try {
+				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 1);
+			} catch(e) {
+				throw e;
+			}
+		}).then(function(data) {
+			// Create the contact if the check contact was successful.
+			eppCommander.createContact(contactData).then(
+			function(data) {
+				try {
+					expect(data).to.have.deep.property('result.code', 1000);
+					done();
+				} catch(e) {
+					done(e);
+				}
+			});
+		},
+		function(error) {
+			done(error);
+		});
+	});
+	it('should check if second billing contact exists', function(done) {
+		this.timeout(10000);
+		var contactData = {
+			"id": updateBillingId
+		};
+		eppCommander.checkContact(contactData).then(function(data) {
+			try {
+				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 0);
+				done();
+			} catch(e) {
+				done(e);
+			}
+		});
+	});
+    it('should update the domain with new ns and contact', function(done) {
+        this.timeout(40000);
+        var updateData = {
+            "name": domain,
+            "chg": {
+                "registrant": updateRegistrantId
+            },
+            "rem": {
+                "contact": [ {"billing": billingId} ],
+                "ns": ["ns2.hexonet.net"]
+            },
+            "add":{
+                "contact": [{"billing": updateBillingId}]
+            }
+        };
+        eppCommander.updateDomain(updateData).then(function(data) {
+            try {
+                console.log("Update result: ", data);
+                expect(data).to.have.deep.property('result.code', 1000);
+                done();
+            } catch (e) {
+                done(e);
+            }
+        }, function(error) {done(error);});
+    });
 });
 
