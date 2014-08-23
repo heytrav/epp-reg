@@ -56,7 +56,6 @@ describe("Contact creation", function() {
                 done(e);
             }
         });
-
     });
 
     it('should get a failed create contact error', function(done) {
