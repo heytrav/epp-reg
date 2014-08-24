@@ -212,7 +212,7 @@ describe('NZRS scenarios', function() {
                     "unit": "y",
                     "value": 1
                 },
-                "ns": [{"host":"ns1.hexonet.net"}, {"host": "ns2.hexonet.net"},{"host": "ns3.hexonet.net"}],
+                "ns": [{"host":"ns1.hexonet.net"}, {"host": "ns2.hexonet.net"}],
                 "registrant": registrantId,
                 "contact": [{
                     "admin": adminId
@@ -359,12 +359,13 @@ describe('NZRS scenarios', function() {
                 "contact": [{
                     "tech": techId
                 }],
-                "ns": ["ns2.hexonet.net"]
+                "ns": [{"host":"ns2.hexonet.net"}]
             },
             "add": {
                 "contact": [{
                     "tech": updateTechId
-                }]
+                }],
+                "ns":[{"host": "ns3.hexonet.net"}]
             }
         };
         eppCommander.updateDomain(updateData).then(function(data) {
