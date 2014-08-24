@@ -239,7 +239,6 @@ describe('NZRS scenarios', function() {
             });
         });
     });
-
     it('should check for and then create a different contact', function(done) {
         this.timeout(10000);
         updateRegistrantId = ['iwmn', moment().unix()].join('-');
