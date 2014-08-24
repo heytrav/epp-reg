@@ -7,18 +7,18 @@ var expect = chai.expect,
 should = chai.should;
 
 var EppCommander = require('../lib/epp-commander.js');
-describe('Hexonet scenarios', function() {
+describe('NZRS scenarios', function() {
 	var eppCommander;
 	var registrant, tech, admin, billing;
 	var registrantId, updateRegistrantId;
-	var techId = 'iwmn-hex1-tech',
-	billingId = 'iwmn-hex1-billing',
-    updateBillingId = 'iwmn-hex1-billing2',
-	adminId = 'iwmn-hex1-admin';
+	var techId = 'iwmn-nzrs1-tech',
+	billingId = 'iwmn-nzrs1-billing',
+    updateBillingId = 'iwmn-nzrs1-billing2',
+	adminId = 'iwmn-nzrs1-admin';
     var domain = ['iwmn', moment().unix(), 'test.com'].join('-');
 
 	beforeEach(function() {
-		eppCommander = new EppCommander('hexonet-test1');
+		eppCommander = new EppCommander('nzrs-test1');
 	});
 	it('should check for and then create a regular contact', function(done) {
 		this.timeout(10000);
@@ -68,6 +68,53 @@ describe('Hexonet scenarios', function() {
 			done(error);
 		});
 	});
+	it('should check for and then create a billing contact', function(done) {
+		this.timeout(10000);
+		var contactData = {
+			"id": billingId,
+			"voice": "+1.9405551234",
+			"fax": "+1.9405551233",
+			"email": "test+billing@ideegeo.com",
+			"authInfo": {
+				"pw": "xyz123"
+			},
+			"postalInfo": [{
+				"name": "Billing Guy",
+				"org": "",
+				"type": "int",
+				"addr": [{
+					"street": ["167 Vivian St.", "Apt b"],
+					"city": "Wellington",
+					"sp": "Wellington",
+					"pc": "6011",
+					"cc": "NZ"
+				}]
+			}]
+		};
+		eppCommander.checkContact({
+			"id": billingId
+		}).then(function(data) {
+			try {
+				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 1);
+			} catch(e) {
+				throw e;
+			}
+		}).then(function(data) {
+			// Create the contact if the check contact was successful.
+			eppCommander.createContact(contactData).then(
+			function(data) {
+				try {
+					expect(data).to.have.deep.property('result.code', 1000);
+					done();
+				} catch(e) {
+					done(e);
+				}
+			});
+		},
+		function(error) {
+			done(error);
+		});
+	});
 	it('should check if billing contact exists', function(done) {
 		this.timeout(10000);
 		var contactData = {
@@ -84,6 +131,53 @@ describe('Hexonet scenarios', function() {
 			}
 		});
 	});
+	it('should check for and then create a tech contact', function(done) {
+		this.timeout(10000);
+		var contactData = {
+			"id": techId,
+			"voice": "+1.9405551234",
+			"fax": "+1.9405551233",
+			"email": "test+tech@ideegeo.com",
+			"authInfo": {
+				"pw": "xyz123"
+			},
+			"postalInfo": [{
+				"name": "Tech Guy",
+				"org": "",
+				"type": "int",
+				"addr": [{
+					"street": ["167 Vivian St.", "Apt b"],
+					"city": "Wellington",
+					"sp": "Wellington",
+					"pc": "6011",
+					"cc": "NZ"
+				}]
+			}]
+		};
+		eppCommander.checkContact({
+			"id": techId
+		}).then(function(data) {
+			try {
+				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 1);
+			} catch(e) {
+				throw e;
+			}
+		}).then(function(data) {
+			// Create the contact if the check contact was successful.
+			eppCommander.createContact(contactData).then(
+			function(data) {
+				try {
+					expect(data).to.have.deep.property('result.code', 1000);
+					done();
+				} catch(e) {
+					done(e);
+				}
+			});
+		},
+		function(error) {
+			done(error);
+		});
+	});
 	it('should check if tech contact exists', function(done) {
 		this.timeout(10000);
 		var contactData = {
@@ -98,6 +192,53 @@ describe('Hexonet scenarios', function() {
 			} catch(e) {
 				done(e);
 			}
+		});
+	});
+	it('should check for and then create a admin contact', function(done) {
+		this.timeout(10000);
+		var contactData = {
+			"id": adminId,
+			"voice": "+1.9405551234",
+			"fax": "+1.9405551233",
+			"email": "test+admin@ideegeo.com",
+			"authInfo": {
+				"pw": "xyz123"
+			},
+			"postalInfo": [{
+				"name": "Admin Guy",
+				"org": "",
+				"type": "int",
+				"addr": [{
+					"street": ["167 Vivian St.", "Apt b"],
+					"city": "Wellington",
+					"sp": "Wellington",
+					"pc": "6011",
+					"cc": "NZ"
+				}]
+			}]
+		};
+		eppCommander.checkContact({
+			"id": adminId
+		}).then(function(data) {
+			try {
+				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 1);
+			} catch(e) {
+				throw e;
+			}
+		}).then(function(data) {
+			// Create the contact if the check contact was successful.
+			eppCommander.createContact(contactData).then(
+			function(data) {
+				try {
+					expect(data).to.have.deep.property('result.code', 1000);
+					done();
+				} catch(e) {
+					done(e);
+				}
+			});
+		},
+		function(error) {
+			done(error);
 		});
 	});
 	it('should check if admin contact exists', function(done) {
@@ -172,6 +313,53 @@ describe('Hexonet scenarios', function() {
 		};
 		eppCommander.checkContact({
 			"id": updateRegistrantId
+		}).then(function(data) {
+			try {
+				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 1);
+			} catch(e) {
+				throw e;
+			}
+		}).then(function(data) {
+			// Create the contact if the check contact was successful.
+			eppCommander.createContact(contactData).then(
+			function(data) {
+				try {
+					expect(data).to.have.deep.property('result.code', 1000);
+					done();
+				} catch(e) {
+					done(e);
+				}
+			});
+		},
+		function(error) {
+			done(error);
+		});
+	});
+	it('should check for and then create a billing contact', function(done) {
+		this.timeout(10000);
+		var contactData = {
+			"id": updateBillingId,
+			"voice": "+1.9405551234",
+			"fax": "+1.9405551233",
+			"email": "test+billing@ideegeo.com",
+			"authInfo": {
+				"pw": "xyz123"
+			},
+			"postalInfo": [{
+				"name": "Billing Guy",
+				"org": "",
+				"type": "int",
+				"addr": [{
+					"street": ["167 Vivian St.", "Apt b"],
+					"city": "Wellington",
+					"sp": "Wellington",
+					"pc": "6011",
+					"cc": "NZ"
+				}]
+			}]
+		};
+		eppCommander.checkContact({
+			"id": updateBillingId
 		}).then(function(data) {
 			try {
 				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 1);
