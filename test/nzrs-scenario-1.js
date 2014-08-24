@@ -427,10 +427,10 @@ describe('NZRS scenarios', function() {
                 }, function(error){
                     try {
                         expect(error).to.have.deep.property('result.code');
+                        done();
                     } catch (e) {
                         done(e);
                     }
-                    done(error);
                 });
         });
     } );
