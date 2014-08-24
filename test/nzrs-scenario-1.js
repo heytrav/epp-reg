@@ -22,7 +22,7 @@ describe('NZRS scenarios', function() {
 	});
 	it('should check for and then create a regular contact', function(done) {
 		this.timeout(10000);
-        registrantId = ['iwmn', moment().unix()].join('-');
+        registrantId = ['iwmn', moment().unix()].join('');
 		var contactData = {
 			"id": registrantId,
 			"voice": "+1.9405551234",
