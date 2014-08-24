@@ -11,11 +11,11 @@ describe('NZRS scenarios', function() {
 	var eppCommander;
 	var registrant, tech, admin, billing;
 	var registrantId, updateRegistrantId;
-	var techId = 'iwmn-nzrs1-tech',
-	billingId = 'iwmn-nzrs1-billing',
-    updateBillingId = 'iwmn-nzrs1-billing2',
-	adminId = 'iwmn-nzrs1-admin';
-    var domain = ['iwmn', moment().unix(), 'test.com'].join('-');
+	var techId = 'nzrs1tech',
+	billingId = 'nzrs1billing',
+    updateBillingId = 'nzrs1billing2',
+	adminId = 'nzrs1admin';
+    var domain = ['iwmn', moment().unix(), 'test.co.nz'].join('');
 
 	beforeEach(function() {
 		eppCommander = new EppCommander('nzrs-test1');
