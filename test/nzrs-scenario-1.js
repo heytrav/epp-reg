@@ -212,7 +212,7 @@ describe('NZRS scenarios', function() {
                     "unit": "y",
                     "value": 1
                 },
-                "ns": ["ns1.hexonet.net", "ns2.hexonet.net", "ns3.hexonet.net"],
+                "ns": [{"host":"ns1.hexonet.net"}, {"host": "ns2.hexonet.net"},{"host": "ns3.hexonet.net"}],
                 "registrant": registrantId,
                 "contact": [{
                     "admin": adminId
