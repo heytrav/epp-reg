@@ -10,10 +10,10 @@ var EppCommander = require('../lib/epp-commander.js');
 describe('Hexonet scenarios', function() {
 	var eppCommander;
 	var registrant, tech, admin, billing;
-	var registrantId, updateRegistrantId, updateBillingId;
+	var registrantId, updateRegistrantId;
 	var techId = 'iwmn-hex1-tech',
 	billingId = 'iwmn-hex1-billing',
-    updateBillingId = 'iwmn-hex1-billing2'
+    updateBillingId = 'iwmn-hex1-billing2',
 	adminId = 'iwmn-hex1-admin';
     var domain = ['iwmn', moment().unix(), 'test.com'].join('-');
 
@@ -227,6 +227,19 @@ describe('Hexonet scenarios', function() {
         eppCommander.updateDomain(updateData).then(function(data) {
             try {
                 console.log("Update result: ", data);
+                expect(data).to.have.deep.property('result.code', 1000);
+                done();
+            } catch (e) {
+                done(e);
+            }
+        }, function(error) {done(error);});
+    });
+    it('should do an info domain', function(done) {
+        this.timeout(40000);
+        var infoDomain= {"name": domain};
+        eppCommander.infoDomain(infoDomain).then(function(data) {
+            try {
+                console.log("info result: ", data);
                 expect(data).to.have.deep.property('result.code', 1000);
                 done();
             } catch (e) {
