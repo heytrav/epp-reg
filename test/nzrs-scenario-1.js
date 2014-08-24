@@ -13,7 +13,7 @@ describe('NZRS scenarios', function() {
 	var registrantId, updateRegistrantId;
 	var techId = 'nzrs1tech',
 	billingId = 'nzrs1billing',
-    updateBillingId = 'nzrs1billing2',
+    updateTechId = 'nzrs1tech2',
 	adminId = 'nzrs1admin';
     var domain = ['iwmn', moment().unix(), 'test.co.nz'].join('');
 
@@ -52,7 +52,11 @@ describe('NZRS scenarios', function() {
 			} catch(e) {
 				throw e;
 			}
-		}).then(function(data) {
+		}, 
+        function(error) {
+            // catch error that may come out of check.
+            done(error);
+        }).then(function(data) {
 			// Create the contact if the check contact was successful.
 			eppCommander.createContact(contactData).then(
 			function(data) {
@@ -62,73 +66,13 @@ describe('NZRS scenarios', function() {
 				} catch(e) {
 					done(e);
 				}
-			});
-		},
-		function(error) {
-			done(error);
-		});
-	});
-	it('should check for and then create a billing contact', function(done) {
-		this.timeout(10000);
-		var contactData = {
-			"id": billingId,
-			"voice": "+1.9405551234",
-			"fax": "+1.9405551233",
-			"email": "test+billing@ideegeo.com",
-			"authInfo": {
-				"pw": "xyz123"
 			},
-			"postalInfo": [{
-				"name": "Billing Guy",
-				"org": "",
-				"type": "int",
-				"addr": [{
-					"street": ["167 Vivian St.", "Apt b"],
-					"city": "Wellington",
-					"sp": "Wellington",
-					"pc": "6011",
-					"cc": "NZ"
-				}]
-			}]
-		};
-		eppCommander.checkContact({
-			"id": billingId
-		}).then(function(data) {
-			try {
-				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 1);
-			} catch(e) {
-				throw e;
-			}
-		}).then(function(data) {
-			// Create the contact if the check contact was successful.
-			eppCommander.createContact(contactData).then(
-			function(data) {
-				try {
-					expect(data).to.have.deep.property('result.code', 1000);
-					done();
-				} catch(e) {
-					done(e);
-				}
-			});
+            function(error){
+                done(error);    
+            });
 		},
 		function(error) {
 			done(error);
-		});
-	});
-	it('should check if billing contact exists', function(done) {
-		this.timeout(10000);
-		var contactData = {
-			"id": billingId
-		};
-		eppCommander.checkContact({
-			"id": billingId
-		}).then(function(data) {
-			try {
-				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 0);
-				done();
-			} catch(e) {
-				done(e);
-			}
 		});
 	});
 	it('should check for and then create a tech contact', function(done) {
@@ -334,10 +278,10 @@ describe('NZRS scenarios', function() {
 			done(error);
 		});
 	});
-	it('should check for and then create a billing contact', function(done) {
+	it('should check for and then create a new tech contact', function(done) {
 		this.timeout(10000);
 		var contactData = {
-			"id": updateBillingId,
+			"id": updateTechId,
 			"voice": "+1.9405551234",
 			"fax": "+1.9405551233",
 			"email": "test+billing@ideegeo.com",
@@ -358,7 +302,7 @@ describe('NZRS scenarios', function() {
 			}]
 		};
 		eppCommander.checkContact({
-			"id": updateBillingId
+			"id": updateTechId
 		}).then(function(data) {
 			try {
 				expect(data).to.have.deep.property('data.contact:chkData.contact:cd.contact:id.avail', 1);
@@ -381,10 +325,10 @@ describe('NZRS scenarios', function() {
 			done(error);
 		});
 	});
-	it('should check if second billing contact exists', function(done) {
+	it('should check if second tech contact exists', function(done) {
 		this.timeout(10000);
 		var contactData = {
-			"id": updateBillingId
+			"id": updateTechId
 		};
 		eppCommander.checkContact(contactData).then(function(data) {
 			try {
@@ -407,7 +351,7 @@ describe('NZRS scenarios', function() {
                 "ns": ["ns2.hexonet.net"]
             },
             "add":{
-                "contact": [{"billing": updateBillingId}]
+                "contact": [{"billing": updateTechId}]
             }
         };
         eppCommander.updateDomain(updateData).then(function(data) {
