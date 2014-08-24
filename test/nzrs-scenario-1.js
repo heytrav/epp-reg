@@ -271,7 +271,6 @@ describe('NZRS scenarios', function() {
                 "contact": [
                     { "admin": adminId },
                     { "tech": techId },
-                    { "billing": billingId }
                 ],
                 "authInfo": {
                     "pw": "Axri3k.XXjp"
