@@ -423,13 +423,15 @@ describe('NZRS scenarios', function() {
 
             eppCommander2.transferDomain(transferData).then(
                 function(data){
-                    console.log("Transfer response: ", data);
+                    done(new Error('Should not execute'));
+                }, function(error){
                     try {
-                        expect(data).to.have.deep.property('result.code');
+                        expect(error).to.have.deep.property('result.code');
                     } catch (e) {
                         done(e);
                     }
-                }, function(error){done(error);});
+                    done(error);
+                });
         });
     } );
 });
