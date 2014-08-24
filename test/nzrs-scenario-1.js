@@ -23,6 +23,7 @@ describe('NZRS scenarios', function() {
 	it('should check for and then create a regular contact', function(done) {
 		this.timeout(10000);
         registrantId = ['iwmn', moment().unix()].join('');
+        // Note!! "org" field not supported!
 		var contactData = {
 			"id": registrantId,
 			"voice": "+1.9405551234",
@@ -33,7 +34,6 @@ describe('NZRS scenarios', function() {
 			},
 			"postalInfo": [{
 				"name": "Homer Simpson",
-				"org": "Nucular Power Plant",
 				"type": "int",
 				"addr": [{
 					"street": ["742 Evergreen Terrace", "Apt b"],
@@ -75,7 +75,7 @@ describe('NZRS scenarios', function() {
 			done(error);
 		});
 	});
-	it('should check for and then create a tech contact', function(done) {
+	it.skip('should check for and then create a tech contact', function(done) {
 		this.timeout(10000);
 		var contactData = {
 			"id": techId,
@@ -138,7 +138,7 @@ describe('NZRS scenarios', function() {
 			}
 		});
 	});
-	it('should check for and then create a admin contact', function(done) {
+	it.skip('should check for and then create a admin contact', function(done) {
 		this.timeout(10000);
 		var contactData = {
 			"id": adminId,
@@ -278,7 +278,7 @@ describe('NZRS scenarios', function() {
 			done(error);
 		});
 	});
-	it('should check for and then create a new tech contact', function(done) {
+	it.skip('should check for and then create a new tech contact', function(done) {
 		this.timeout(10000);
 		var contactData = {
 			"id": updateTechId,
@@ -347,11 +347,11 @@ describe('NZRS scenarios', function() {
                 "registrant": updateRegistrantId
             },
             "rem": {
-                "contact": [ {"billing": billingId} ],
+                "contact": [ {"tech": techId} ],
                 "ns": ["ns2.hexonet.net"]
             },
             "add":{
-                "contact": [{"billing": updateTechId}]
+                "contact": [{"tech": updateTechId}]
             }
         };
         eppCommander.updateDomain(updateData).then(function(data) {
