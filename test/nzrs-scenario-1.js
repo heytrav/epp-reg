@@ -427,6 +427,7 @@ describe('NZRS scenarios', function() {
                 }, function(error){
                     try {
                         expect(error).to.have.deep.property('result.code');
+                        expect(error.result.code).to.be.gt(2000);
                         done();
                     } catch (e) {
                         done(e);
