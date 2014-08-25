@@ -8,7 +8,7 @@ should = chai.should;
 
 var EppCommander = require('../lib/epp-commander.js');
 describe('NZRS delete scenario', function() {
-    var domain = ['iwmn', moment().unix(), 'test.co.nz'].join('');
+    var domain = ['iwmn', moment().unix(), 'test.co.nz'].join('-');
     describe('create a domain, then delete it', function() {
         var eppCommander;
         var registrant, tech, admin, billing;
@@ -153,19 +153,22 @@ describe('NZRS delete scenario', function() {
             });
         });
         it('should delete domain', function(done) {
-            var deleteData = {"domain": domain};
+            var deleteData = {
+                "domain": domain
+            };
             eppCommander.deleteDomain(deleteData).then(function(data) {
                 try {
                     expect(data).to.have.deep.property('result.code', 1000);
                     done();
-                    
-                } catch (e) {
+
+                } catch(e) {
                     done(e);
                 }
-            },function(error) {
+            },
+            function(error) {
                 done(error);
-            } );
-            
+            });
+
         });
     });
 });
