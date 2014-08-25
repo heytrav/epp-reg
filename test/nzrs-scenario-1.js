@@ -233,6 +233,7 @@ describe('NZRS scenarios', function() {
                 };
                 eppCommander.createDomain(createDomain).then(function(data) {
                     try {
+                        console.log("Created domain: " + domain);
                         expect(data).to.have.deep.property('result.code', 1000);
                         done();
                     } catch(e) {
