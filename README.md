@@ -23,41 +23,50 @@ Backend logic for EPP commands to help with testing and prototyping
 
 Library for posting to the EPP service listening to RabbitMQ. Although mostly
 for testing purposes, there will hopefully be some code here worthy of being
-in our backend system in the future sometime.  This code is all about
-end-to-end testing operations like creating contacts and domains, updating
-domains, etc.
+in our backend system in the future.
+
+This code is all about end-to-end testing operations like creating contacts
+and domains, updating domains, etc.
 
 Please see the ```ideegeo/nodepp``` repository for a detailed description of
 commands.
 
 Note that all commands return a *promise* object.
 
+# Dependencies
+
+1.  An instance of RabbitMQ. The ```devel``` configuration assumes this is
+    running at ```devel.iwantmyname.com```.
+2.  ```nodepp``` installed, running and connected to RabbitMQ.
+
+
+
+# Installation
+
+    git clone git@github.com:ideegeo/epp-reg.git
+    cd epp-reg
+    npm install
+
+
 
 # Configuration
 
-    ln -sf ./config/epp-reg-devel.json ./config/epp-reg.json
+    ln -sf `pwd`/config/epp-reg-devel.json `pwd`/config/epp-reg.json
 
 This is for developement environments, however as this is mostly generic
 RabbitMQ stuff it can probably be safely copied for production or other
 environments.
 
-# Installation
+If you want to change anything, please make a new config file with your
+settings and ```ln -sf``` to it. Otherwise you might cause future automated
+unit tests to do something unpredictable.
 
-    npm install
+
+# Testing
+
     npm test
 
 *Note* see section on **Dependencies** in regards to testing.
-
-
-# Dependencies
-
-1.  A local instance of RabbitMQ. By default the configuration assumes
-    this is accesible at ```devel.iwantmyname.com```
-2.  ```nodepp``` installed and running. Commands are sent directly over
-    nodepp to the registry.
-
-
-
 
 
 
