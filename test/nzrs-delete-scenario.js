@@ -152,7 +152,7 @@ describe('NZRS delete scenario', function() {
                 });
             });
         });
-        it('should delete domain', function() {
+        it('should delete domain', function(done) {
             var deleteData = {"domain": domain};
             eppCommander.deleteDomain(deleteData).then(function(data) {
                 try {
