@@ -14,6 +14,7 @@ describe('NZRS poll', function() {
         eppCommander = new EppCommander('nzrs-test1');
     });
     it('should execute a poll', function(done) {
+        this.timeout(10000);
         var pollData = {
             "op": "req"
         };
