@@ -409,7 +409,7 @@ describe('NZRS scenarios', function() {
             });
         });
     });
-    describe('domain operations accreditation 2', function(){
+    describe.skip('domain operations accreditation 2', function(){
         var eppCommander2;
         beforeEach(function(){
             eppCommander2 = new EppCommander('nzrs-test2');
