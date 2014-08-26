@@ -48,6 +48,7 @@ describe('NZRS poll', function() {
                 console.log("Poll ack returned: ", data);
                 try {
                     expect(data.result.code).to.be.within(1000, 2000);
+                    done();
                 } catch(e) {
                     done(e);
                 }
