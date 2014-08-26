@@ -24,6 +24,9 @@ describe('NZRS poll', function() {
             try {
                 expect(data).to.have.deep.property('result.code');
                 expect(data.result.code).to.be.lt(2000);
+                if (data.hasOwnProperty('msgQ')) {
+                    msgId = data.msgQ.id;
+                }
                 done();
             } catch(e) {
                 done(e);
@@ -33,6 +36,27 @@ describe('NZRS poll', function() {
             done(error);
         });
 
+    });
+    it('should ack a message', function(done) {
+        this.timeout(10000);
+        if (msgId !== undefined) {
+            eppCommander.poll({"op":"ack", "msgID": msgId }).then(
+                function(data) {
+                    console.log("Poll ack returned: ", data);
+                    try {
+                        expect(data.result.code).to.be.within(1300, 1399);
+                    } catch (e) {
+                        done(e);
+                    }
+                }, 
+                function (error) {
+                    done(error);
+                }
+                );
+        } else {
+            // there was no msgId in previous poll req
+            done();
+        }
     });
 });
 
