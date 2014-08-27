@@ -16,7 +16,7 @@ describe('NZRS domain transfer', function () {
             eppCommander.infoDomain({"domain": domain}).then(
                 function(data) {
                     try {
-                        expect(data).to.include.members(["result", "data"]);
+                        expect(data).to.have.deep.property("data");
                         done();
                     } catch (e) {
                         done(e);
