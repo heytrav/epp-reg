@@ -6,7 +6,7 @@ should = chai.should;
 
 var EppCommander = require('../lib/epp-commander.js');
 describe('NZRS domain transfer', function () {
-    var domain;
+    var domain = 'iwmn1408993332test.co.nz';
     describe('get domain info', function () {
         var eppCommander;
         before(function() {
