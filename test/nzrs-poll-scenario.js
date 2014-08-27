@@ -19,6 +19,14 @@ describe('NZRS poll', function() {
         eppCommander.poll(pollData).then(
         function(data) {
             console.log("Poll returned: ", data);
+            if (data.hasOwnProperty('data')) {
+                var pollData = data.data;
+                if (pollData.hasOwnProperty('domain:infData')) {
+                   var infoData = pollData['domain:infData']; 
+                   var authInfo = infoData["domain:authInfo"];
+                   console.log("Auth info: ", authInfo);
+                }
+            }
             try {
                 expect(data).to.have.deep.property('result.code');
                 expect(data.result.code).to.be.within(1300, 1399);
