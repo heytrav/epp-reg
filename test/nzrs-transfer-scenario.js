@@ -22,10 +22,9 @@ describe('NZRS domain transfer', function () {
                         done(e);
                     }
                 }, 
-                function(error) {}
-                );
-            
-
+                function(error) {
+                    done(error);
+                });
         });
 
     });
