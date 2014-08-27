@@ -17,6 +17,7 @@ describe('NZRS domain transfer', function () {
                 function(data) {
                     try {
                         expect(data).to.have.deep.property("data");
+                        console.log("Domain data: ", data.data);
                         done();
                     } catch (e) {
                         done(e);
