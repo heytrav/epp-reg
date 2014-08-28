@@ -76,7 +76,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it.skip('should check for and then create a tech contact', function(done) {
+        it('should check for and then create a tech contact', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": techId,
@@ -139,7 +139,7 @@ describe('NZRS scenarios', function() {
                 }
             });
         });
-        it.skip('should check for and then create a admin contact', function(done) {
+        it('should check for and then create a admin contact', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": adminId,
@@ -293,7 +293,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it.skip('should check for and then create a new tech contact', function(done) {
+        it('should check for and then create a new tech contact', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": updateTechId,
