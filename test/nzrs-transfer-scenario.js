@@ -6,14 +6,15 @@ should = chai.should;
 
 var EppCommander = require('../lib/epp-commander.js');
 describe('NZRS domain transfer', function () {
-    var domain = 'iwmn1408993332test.co.nz';
+    var domain = 'iwmn1408920941test.co.nz';
+    var authInfo = '79z4wBm7';
     describe('get domain info', function () {
         var eppCommander;
         before(function() {
             eppCommander = new EppCommander('nzrs-test1');
         });
         it('should get info for a domain', function(done) {
-            eppCommander.infoDomain({"domain": domain}).then(
+            eppCommander.infoDomain({"domain": domain, "authInfo": authInfo}).then(
                 function(data) {
                     try {
                         expect(data).to.have.deep.property("data");
