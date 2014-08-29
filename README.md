@@ -85,8 +85,8 @@ far.
             --country 'Springfield' \
             --state Florida \
             --telephone '+1.123456789' \
-            --postcode 25000 \ # postcode 
-            -o USA 
+            --postcode 25000 \ # postcode
+            -o USA
 
 
 ## create-domain.js
@@ -101,7 +101,7 @@ far.
             --nameserver 'ns2.hexonet.net' \
             --nsobj 'ns.test-6-iwmn.co.nz;23.44.23.12' \ # Glue record!
             --period 1  \
-            --unit y 
+            --unit y
 
 Output:
 
@@ -118,7 +118,7 @@ or if there was an error (eg. the domain is already registered):
         node lib/info-domain.js -d test-4-iwmn.co.nz -r nzrs-test1
 
 Output:
-        
+
         { 'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
             'domain:name': 'test-4-iwmn.co.nz',
             'domain:roid': 'd95928bbc4a0-DOM',
@@ -128,6 +128,9 @@ Output:
             'domain:crDate': '2014-08-29T21:51:34+12:00',
             'domain:exDate': '2015-08-29T21:51:34+12:00' } }
 
+## update-domain.js
+
+WIP
 
 ## poll-cli.js
 This is used to iteratively retrieve queued messages from the registry. The
@@ -155,7 +158,7 @@ Output:
         'domain:authInfo': { 'domain:pw': 'FMMhQJHZ' } }
 
 To dequeue that message:
-        
+
         node lib/poll-cli.js -r nzrs-test1 -i 0195iwmn-1409306037
 
 Output:
