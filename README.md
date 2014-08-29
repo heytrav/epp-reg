@@ -113,6 +113,8 @@ or if there was an error (eg. the domain is already registered):
 
         Unable to register domain:  [Error: Domain is not available]
 
+Note that some options (```--nameserver```, ```--admin```, ```--tech```, ```--billing```) can be entered multiple times.
+
 
 ## info-domain.js
 
@@ -131,6 +133,21 @@ Output:
             'domain:exDate': '2015-08-29T21:51:34+12:00' } }
 
 ## update-domain.js
+
+        node lib/update-domain.js -r nzrs-test1 \ 
+            -d test-4-iwmn.co.nz \
+            --admin iwmn-admin-1   \ # admincontact to add
+            --admin iwmn-admin-2   \ # add another admin
+            --remadmin  iwmn-1409280485 \ # admin to remove
+            --ns ns3.hexonet.net \ # nameserver to add
+            --ns ns4.hexonet.net \ # another nameserver
+            --remns ns2.hexonet.net \ # nameserver to remove
+            --registrant iwmn-12345 \ # new registrant
+            --period 24  \# change to 24 month registration (nzrs wants months!)
+            --unit m
+
+
+
 
 
 ## poll-cli.js
