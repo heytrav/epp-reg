@@ -1,5 +1,4 @@
-nconf = require('nconf');
-var fs = require('fs');
+var nconf = require('nconf');
 var chai = require('chai');
 var moment = require('moment');
 
