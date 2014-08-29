@@ -71,6 +71,10 @@ unit tests to do something unpredictable.
 
 # Command line scripts
 
+To make it easier to experiment with some commands I'm adding a few command
+line scripts for interacting with EPP. Here are a few that I've completed so
+far.
+
 ## create-contact.js
 
       node lib/create-contact.js -r nzrs-test1 \
