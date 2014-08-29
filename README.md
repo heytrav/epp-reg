@@ -72,12 +72,13 @@ unit tests to do something unpredictable.
 # Command line scripts
 
 To make it easier to experiment with some commands I'm adding a few command
-line scripts for interacting with EPP. Here are a few that I've completed so
+line scripts for interacting with EPP. Here are a some that I've completed so
 far.
 
 ## create-contact.js
 
       node lib/create-contact.js -r nzrs-test1 \
+            --id 'P-43994' \ # optional. will default to iwmn-<unix timestamp>
             --name 'Joe User' \
             --email joeuser@null.com \
             --street '742 Evergreen Terrace' \
@@ -85,8 +86,8 @@ far.
             --country 'Springfield' \
             --state Florida \
             --telephone '+1.123456789' \
-            --postcode 25000 \ # postcode
-            -o USA
+            --postcode 25000 \
+            --country USA
 
 
 ## create-domain.js
@@ -112,6 +113,7 @@ or if there was an error (eg. the domain is already registered):
 
         Unable to register domain:  [Error: Domain is not available]
 
+
 ## info-domain.js
 
 
@@ -130,7 +132,6 @@ Output:
 
 ## update-domain.js
 
-WIP
 
 ## poll-cli.js
 This is used to iteratively retrieve queued messages from the registry. The
