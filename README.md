@@ -39,7 +39,8 @@ and only tries the create domain if the domain is available.
         eppCommander.checkDomain({domain: "test-domain.co.nz"})
             .then(function(checkResult) {
                 // first check for domain availability
-                var isAvailable = checkResult.data['domain:chkData']['domain:cd']['domain:name'].avail;
+                var isAvailable 
+                    = checkResult.data['domain:chkData']['domain:cd']['domain:name'].avail;
                 if (!isAvailable) {
                     // if not available, throw an exception.
                     //skips directly to .fail block
@@ -190,7 +191,21 @@ Output:
             --period 24  \# change to 24 month registration 
             --unit m
 
+## renew-domain.js
 
+Renew domain for a 2 month period:
+
+
+        node lib/renew-domain.js -r nzrs-test1 \
+            -d test-5-iwmn.co.nz
+            --expiration 2014-10-01
+            --period 2
+            --unit m
+
+## delete-domain.js
+
+
+        node lib/delete-domain.js -r nzrs-test1 \ -d test-6-domain.co.nz
 
 
 
