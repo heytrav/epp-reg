@@ -13,9 +13,6 @@ Backend logic for EPP commands to help with testing and prototyping
     epp.createContact(contactData).then(
         function (okResult) {
             // process data
-        },
-        function (errorResult) {
-            // handle error
         }
     );
 
@@ -31,7 +28,54 @@ and domains, updating domains, etc.
 Please see the ```ideegeo/nodepp``` repository for a detailed description of
 commands.
 
-Note that all commands return a *promise* object.
+Note that all commands return a *promise* object. That means that it is
+possible to chain commands together. Each successful block will be passed to
+the next **then** block. If an exception is thrown anywhere it will go
+immediately to the **fail** block.
+
+This is how the ```lib/create-domain.js``` script does a check domain first
+and only tries the create domain if the domain is available.
+
+        eppCommander.checkDomain({domain: "test-domain.co.nz"})
+            .then(function(checkResult) {
+                // first check for domain availability
+                var isAvailable = checkResult.data['domain:chkData']['domain:cd']['domain:name'].avail;
+                if (!isAvailable) {
+                    // if not available, throw an exception.
+                    //skips directly to .fail block
+                    throw new Error("Domain is not available"); 
+                } else {
+                    // modify createDomain data if necessary and pass on to
+                    // next "then"
+                    return data;  
+                }
+            })
+            .then(function(data) {
+                // data from previous "then" block. Not really needed in this
+                // example.
+                // If an exception is thrown it will go directly to "fail"
+                // block
+                return eppCommander.createDomain(
+                {
+                    domain: "test-domain.co.nz",
+                    registrant: "iwmn-12345",
+                    period: {"value": 1, "unit": "y"},
+                    ns: ["ns1.hexonet.net", "ns2.hexonet.net"],
+                    contact:[
+                        {billing: "iwmn-billing"}, 
+                        {tech: "iwmn-tech"}
+                    ]
+                });
+            })
+            .then(function(data) {
+                console.log("Registration successful!");
+                // handle successful registration
+            })
+            .fail(function(error){
+                console.error("Unable to register domain: ", error);
+                // handle failure: cleanup db, etc.
+            });
+
 
 # Dependencies
 
