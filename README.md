@@ -143,7 +143,7 @@ Output:
             --ns ns4.hexonet.net \ # another nameserver
             --remns ns2.hexonet.net \ # nameserver to remove
             --registrant iwmn-12345 \ # new registrant
-            --period 24  \# change to 24 month registration (nzrs wants months!)
+            --period 24  \# change to 24 month registration 
             --unit m
 
 
@@ -182,4 +182,5 @@ To dequeue that message:
 Output:
 
         Remaining messages:   1
+
 
