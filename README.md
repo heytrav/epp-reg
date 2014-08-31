@@ -135,6 +135,27 @@ far.
             --country USA
 
 
+## update-contact.js
+
+        node lib/update-contact.js -r nzrs-test1 -i iwmn-tech-1 \
+            --telephone '+64.1234567'
+            --street '167 Vivian' \
+            --street 'Apt. b' \
+            --city 'Wellington' \
+            --state 'Wellington' \
+            --country NZ 
+            --postcode 6011
+
+Note that with update it is necessary to *always* provide the address data.
+With *email*, *telephone*, *fax*, *name* it is only necessary to provide stuff
+that is being changed. In the future I will try to make it do an *infoContact*
+to make that a bit easier.
+
+
+## delete-contact.js
+
+        node lib/delete-contact.js -r nzrs-test1 --id iwmn-tech-3
+
 ## create-domain.js
 
 
