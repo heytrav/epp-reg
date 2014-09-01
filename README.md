@@ -35,8 +35,8 @@ possible to chain commands together. Each successful block will be passed to
 the next ```then``` block. If an exception is thrown anywhere it will go
 immediately to the ```fail```` block.
 
-This is how the ```lib/create-domain.js``` script does a check domain first
-and only tries the create domain if the domain is available.
+The following code shows how the ```lib/create-domain.js``` script does a check domain first
+and only tries to create the domain if it is actually available.
 
 
 ```javascript
@@ -61,10 +61,13 @@ eppCommander.checkDomain({domain: "test-domain.co.nz"})
         // block
         return eppCommander.createDomain(
         {
-            domain: "test-domain.co.nz",
+            domain: "test-domain.com",
             registrant: "iwmn-12345",
             period: {"value": 1, "unit": "y"},
-            ns: ["ns1.hexonet.net", "ns2.hexonet.net"],
+            ns: [
+                "ns1.hexonet.net", 
+                "ns2.hexonet.net"
+            ],
             contact:[
                 {admin: "iwmn-admin-1"}, 
                 {tech: "iwmn-tech-1"}
@@ -72,8 +75,8 @@ eppCommander.checkDomain({domain: "test-domain.co.nz"})
         });
     })
     .then(function(data) {
-        console.log("Registration successful!");
-        // handle successful registration
+        console.log("Created domain: ", domain);
+        console.log("Expires: ", data.data["domain:creData"]["domain:exDate"]);
     })
     .fail(function(error){
         console.error("Unable to register domain: ", error);
