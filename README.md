@@ -34,7 +34,7 @@ epp.createContact(contactData).then(
 Note that all commands return a *promise* object. That means that it is
 possible to chain commands together. Each successful block will be passed to
 the next ```then``` block. If an exception is thrown in the chain somewhere it
-will go directly to the ```fail``` block. Imagine this as an async equivalent of a
+will go directly to the ```fail``` block. Think of this as an async equivalent of a
 ```try/catch``` block.
 
 The following code shows how the ```lib/create-domain.js``` script does a
