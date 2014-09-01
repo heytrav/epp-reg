@@ -32,8 +32,8 @@ commands.
 
 Note that all commands return a *promise* object. That means that it is
 possible to chain commands together. Each successful block will be passed to
-the next **then** block. If an exception is thrown anywhere it will go
-immediately to the **fail** block.
+the next ```then``` block. If an exception is thrown anywhere it will go
+immediately to the ```fail```` block.
 
 This is how the ```lib/create-domain.js``` script does a check domain first
 and only tries the create domain if the domain is available.
@@ -56,9 +56,8 @@ eppCommander.checkDomain({domain: "test-domain.co.nz"})
         }
     })
     .then(function(data) {
-        // data from previous "then" block. Not really needed in this
-        // example.
-        // If an exception is thrown it will go directly to "fail"
+        // data from previous "then" block. Not really needed in this //
+        // example.If an exception is thrown it will go directly to "fail" //
         // block
         return eppCommander.createDomain(
         {
@@ -67,8 +66,8 @@ eppCommander.checkDomain({domain: "test-domain.co.nz"})
             period: {"value": 1, "unit": "y"},
             ns: ["ns1.hexonet.net", "ns2.hexonet.net"],
             contact:[
-                {billing: "iwmn-billing"}, 
-                {tech: "iwmn-tech"}
+                {admin: "iwmn-admin-1"}, 
+                {tech: "iwmn-tech-1"}
             ]
         });
     })
