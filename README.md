@@ -221,6 +221,8 @@ Output:
             --remns ns2.hexonet.net \ # nameserver to remove
             --registrant iwmn-12345 \ # new registrant
             --period 24  \# change to 24 month registration
+            --status 'clientHold:Payment Due' \ # add a status
+            --remstatus 'transferBlock' \ # remove a status
             --unit m
 
 **Note** nsobj syntax for specifying IPv4 and IPv6 addresses (also for
