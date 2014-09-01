@@ -224,7 +224,8 @@ Output:
             --unit m
 
 **Note** nsobj syntax for specifying IPv4 and IPv6 addresses (also for
-```create-domain.js```).
+```create-domain.js```). ```=v6``` is necessary to specify **IPv6** addresses.
+Default will always be **IPv4**.
 
 
 ## renew-domain.js
