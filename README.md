@@ -143,7 +143,7 @@ far.
             --street 'Apt. b' \
             --city 'Wellington' \
             --state 'Wellington' \
-            --country NZ 
+            --country NZ   \
             --postcode 6011
 
 Note that with update it is necessary to *always* provide the address data.
