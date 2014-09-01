@@ -46,16 +46,16 @@ available.
 eppCommander.checkDomain({domain: "test-domain.co.nz"})
     .then(function(checkResult) {
         // first check for domain availability
-        var isAvailable 
+        var isAvailable
             = checkResult.data['domain:chkData']['domain:cd']['domain:name'].avail;
         if (!isAvailable) {
             // if not available, throw an exception.
             //skips directly to .fail block
-            throw new Error("Domain is not available"); 
+            throw new Error("Domain is not available");
         } else {
             // modify createDomain data if necessary and pass on to
             // next "then"
-            return data;  
+            return data;
         }
     })
     .then(function(data) {
@@ -68,11 +68,11 @@ eppCommander.checkDomain({domain: "test-domain.co.nz"})
             registrant: "iwmn-12345",
             period: {"value": 1, "unit": "y"},
             ns: [
-                "ns1.hexonet.net", 
+                "ns1.hexonet.net",
                 "ns2.hexonet.net"
             ],
             contact:[
-                {admin: "iwmn-admin-1"}, 
+                {admin: "iwmn-admin-1"},
                 {tech: "iwmn-tech-1"}
             ]
         });
@@ -170,16 +170,17 @@ to make that a bit easier.
 
 See #Synopsis above for an idea how this works.
 
-        node lib/create-domain.js -r nzrs-test1 \
-            --name test-6-iwmn.co.nz \
-            --registrant iwmn-1409280841 \
-            --admin iwmn-1409280485 \
-            --tech iwmn-1409280762  \
-            --nameserver 'ns1.hexonet.net' \
-            --nameserver 'ns2.hexonet.net' \
-            --nsobj 'ns.test-6-iwmn.co.nz;23.44.23.12' \ # Glue record!
-            --period 1  \
-            --unit y
+    node lib/create-domain.js -r nzrs-test1 \
+        --name test-6-iwmn.co.nz \
+        --registrant iwmn-1409280841 \
+        --admin iwmn-1409280485 \
+        --tech iwmn-1409280762  \
+        --nameserver 'ns1.hexonet.net' \
+        --nameserver 'ns2.hexonet.net' \
+        --nsobj 'ns.test-6-iwmn.co.nz;23.44.23.12' \ # Glue record!
+        --period 1  \
+        --unit y
+
 
 Output:
 
@@ -211,17 +212,20 @@ Output:
 
 ## update-domain.js
 
-        node lib/update-domain.js -r nzrs-test1 \ 
+        node lib/update-domain.js -r nzrs-test1 \
             -d test-4-iwmn.co.nz \
             --admin iwmn-admin-1   \ # admincontact to add
             --admin iwmn-admin-2   \ # add another admin
             --remadmin  iwmn-1409280485 \ # admin to remove
-            --ns ns3.hexonet.net \ # nameserver to add
-            --ns ns4.hexonet.net \ # another nameserver
+            --nsobj 'ns1.trav-test-4-iwmn.co.nz;192.168.1.232=v4;2001:0DB8:AC10:FE01::=v6' \ IPv6 record!
             --remns ns2.hexonet.net \ # nameserver to remove
             --registrant iwmn-12345 \ # new registrant
-            --period 24  \# change to 24 month registration 
+            --period 24  \# change to 24 month registration
             --unit m
+
+**Note** nsobj syntax for specifying IPv4 and IPv6 addresses (also for
+```create-domain.js```).
+
 
 ## renew-domain.js
 
