@@ -4,6 +4,18 @@ Backend logic for EPP commands to help with testing and prototyping
 
 
 
+# Description
+
+Library for posting to the EPP service listening to RabbitMQ. Although mostly
+for testing purposes, there will hopefully be some code here worthy of being
+in our backend system in the future.
+
+This code is all about end-to-end testing operations like creating contacts
+and domains, updating domains, etc.
+
+Please see the ```ideegeo/nodepp``` repository for a detailed description of
+commands.
+
 # Synopsis
 
 ```javascript
@@ -18,25 +30,16 @@ epp.createContact(contactData).then(
 );
 ```
 
-# Description
-
-Library for posting to the EPP service listening to RabbitMQ. Although mostly
-for testing purposes, there will hopefully be some code here worthy of being
-in our backend system in the future.
-
-This code is all about end-to-end testing operations like creating contacts
-and domains, updating domains, etc.
-
-Please see the ```ideegeo/nodepp``` repository for a detailed description of
-commands.
 
 Note that all commands return a *promise* object. That means that it is
 possible to chain commands together. Each successful block will be passed to
-the next ```then``` block. If an exception is thrown anywhere it will go
-immediately to the ```fail```` block.
+the next ```then``` block. If an exception is thrown in the chain somewhere it
+will go directly to the ```fail``` block. Imagine this as an async equivalent of a
+```try/catch``` block.
 
-The following code shows how the ```lib/create-domain.js``` script does a check domain first
-and only tries to create the domain if it is actually available.
+The following code shows how the ```lib/create-domain.js``` script does a
+check domain first and only tries to create the domain if it is actually
+available.
 
 
 ```javascript
@@ -165,6 +168,7 @@ to make that a bit easier.
 
 ## create-domain.js
 
+See #Synopsis above for an idea how this works.
 
         node lib/create-domain.js -r nzrs-test1 \
             --name test-6-iwmn.co.nz \
