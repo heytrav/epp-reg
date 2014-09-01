@@ -217,7 +217,8 @@ Output:
             --admin iwmn-admin-1   \ # admincontact to add
             --admin iwmn-admin-2   \ # add another admin
             --remadmin  iwmn-1409280485 \ # admin to remove
-            --nsobj 'ns1.trav-test-4-iwmn.co.nz;192.168.1.232=v4;2001:0DB8:AC10:FE01::=v6' \ IPv6 record!
+            #IPv6 record
+            --nsobj 'ns1.trav-test-4-iwmn.co.nz;2001:0DB8:AC10:FE01::=v6' \
             --remns ns2.hexonet.net \ # nameserver to remove
             --registrant iwmn-12345 \ # new registrant
             --period 24  \# change to 24 month registration
@@ -248,7 +249,8 @@ Renew domain for a 2 month period:
 
 ## transfer-domain.js
 
-        node lib/transfer-domain.js -r nzrs-test2  -d test-6-domain.co.nz  --op request --authinfo 6aWZpy5E
+        node lib/transfer-domain.js -r nzrs-test2  -d test-6-domain.co.nz \
+            --op request --authinfo 6aWZpy5E
 
 **Note** that domain transfers are blocked for a period of 5 days following
 registration (1 day on test systems).
