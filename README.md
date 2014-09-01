@@ -226,8 +226,14 @@ Renew domain for a 2 month period:
 ## delete-domain.js
 
 
-        node lib/delete-domain.js -r nzrs-test1 \ -d test-6-domain.co.nz
+        node lib/delete-domain.js -r nzrs-test1  -d test-6-domain.co.nz
 
+## transfer-domain.js
+
+        node lib/transfer-domain.js -r nzrs-test2  -d test-6-domain.co.nz  --op request --authinfo 6aWZpy5E
+
+**Note** that domain transfers are blocked for a period of 5 days following
+registration (1 day on test systems).
 
 
 ## poll-cli.js
