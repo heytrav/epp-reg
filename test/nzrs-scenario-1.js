@@ -123,7 +123,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it('should check if tech contact exists', function(done) {
+        it.skip('should check if tech contact exists', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": techId,
@@ -186,7 +186,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it('should check if admin contact exists', function(done) {
+        it.skip('should check if admin contact exists', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": adminId,
@@ -202,7 +202,7 @@ describe('NZRS scenarios', function() {
                 }
             });
         });
-        it('should create a domain with contacts', function(done) {
+        it.skip('should create a domain with contacts', function(done) {
             this.timeout(10000);
             eppCommander.checkDomain({
                 "domain": domain
@@ -340,7 +340,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it('should check if second tech contact exists', function(done) {
+        it.skip('should check if second tech contact exists', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": updateTechId
@@ -354,7 +354,7 @@ describe('NZRS scenarios', function() {
                 }
             });
         });
-        it('should update the domain with new ns and contact', function(done) {
+        it.skip('should update the domain with new ns and contact', function(done) {
             this.timeout(40000);
             var updateData = {
                 "name": domain,
@@ -391,7 +391,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it('should do an info domain', function(done) {
+        it.skip('should do an info domain', function(done) {
             this.timeout(40000);
             var infoDomain = {
                 "name": domain
