@@ -7,7 +7,7 @@ var expect = chai.expect,
 should = chai.should;
 
 var EppCommander = require('../lib/epp-commander.js');
-describe('NZRS scenarios', function() {
+describe.skip('NZRS scenarios', function() {
     var domain = ['iwmn', moment().unix(), 'test.co.nz'].join('-');
     describe('create contacts and domain, then update domain with new registrant, tech contact and nameserver', function() {
         var eppCommander;
@@ -76,7 +76,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it.skip('should check for and then create a tech contact', function(done) {
+        it('should check for and then create a tech contact', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": techId,
@@ -123,7 +123,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it.skip('should check if tech contact exists', function(done) {
+        it('should check if tech contact exists', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": techId,
@@ -139,7 +139,7 @@ describe('NZRS scenarios', function() {
                 }
             });
         });
-        it.skip('should check for and then create a admin contact', function(done) {
+        it('should check for and then create a admin contact', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": adminId,
@@ -186,7 +186,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it.skip('should check if admin contact exists', function(done) {
+        it('should check if admin contact exists', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": adminId,
@@ -202,7 +202,7 @@ describe('NZRS scenarios', function() {
                 }
             });
         });
-        it.skip('should create a domain with contacts', function(done) {
+        it('should create a domain with contacts', function(done) {
             this.timeout(10000);
             eppCommander.checkDomain({
                 "domain": domain
@@ -293,7 +293,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it.skip('should check for and then create a new tech contact', function(done) {
+        it('should check for and then create a new tech contact', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": updateTechId,
@@ -340,7 +340,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it.skip('should check if second tech contact exists', function(done) {
+        it('should check if second tech contact exists', function(done) {
             this.timeout(10000);
             var contactData = {
                 "id": updateTechId
@@ -354,7 +354,7 @@ describe('NZRS scenarios', function() {
                 }
             });
         });
-        it.skip('should update the domain with new ns and contact', function(done) {
+        it('should update the domain with new ns and contact', function(done) {
             this.timeout(40000);
             var updateData = {
                 "name": domain,
@@ -391,7 +391,7 @@ describe('NZRS scenarios', function() {
                 done(error);
             });
         });
-        it.skip('should do an info domain', function(done) {
+        it('should do an info domain', function(done) {
             this.timeout(40000);
             var infoDomain = {
                 "name": domain
