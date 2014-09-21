@@ -242,8 +242,7 @@ Output:
         Remaining messages:   2
         next message id:    0195iwmn-1409306037
         Poll msg:   Domain Create
-        Received data:  ```javascript
-        { 
+        Received data: { 
             'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
           'domain:name': 'test-5-iwmn.tld',
           'domain:roid': '3fd1074ac89c-DOM',
@@ -260,7 +259,6 @@ Output:
           'domain:exDate': '2015-08-29T21:53:57+12:00',
           'domain:authInfo': { 'domain:pw': 'FMMhQJHZ' } 
         }
-       ``` 
         
 
 To dequeue that message:
