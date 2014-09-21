@@ -26,7 +26,7 @@ commands.
 
 # Configuration
 
-The configuration is primarily to connect to your RabbitMQ interface.  There
+The configuration should contain login information for your RabbitMQ interface.  There
 is an example configuration in `config/epp-reg-example.json`. I recommend
 copying this for the respective environment (i.e. `production` or
 `development`) and editing that file to fit your needs. Once the configuration
@@ -62,9 +62,8 @@ eppCommander.checkDomain({domain: "test-domain.tld"})
         }
     })
     .then(function(data) {
-        // data from previous "then" block. Not really needed in this //
-        // example.If an exception is thrown it will go directly to "fail" //
-        // block
+        // "data" is from previous "then" block. Not really needed in this
+        // example. If an exception is thrown it will go directly to "fail" block
         return eppCommander.createDomain(
         {
             domain: "test-domain.tld",
@@ -90,10 +89,11 @@ eppCommander.checkDomain({domain: "test-domain.tld"})
     });
 ```
 
-Note that all commands return a *promise* object makint it possible to chain
-commands together. Each successful block will be passed to the next `then`
-block. If an exception is thrown in the chain somewhere execution will go directly to
-the `fail` block. Think of this as an async equivalent of a `try/catch` block.
+Note that all commands return a *promise* object making it possible to chain
+commands together. Each successful block will be passed as the first function
+argument to the following `then` block. If an exception is thrown in the chain
+somewhere execution will go directly to the `fail` block. Think of this as an
+async equivalent of a `try/catch` block.
 
 
 # Command line scripts
