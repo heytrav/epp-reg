@@ -7,7 +7,7 @@ should = chai.should;
 
 var EppCommander = require('../lib/epp-commander.js');
 describe('NZRS delete scenario', function() {
-    var domain = ['iwmn', moment().unix(), 'test.co.nz'].join('-');
+    var domain = ['iwmn', moment().unix(), 'test.tld'].join('-');
     describe.skip('create a domain, then delete it', function() {
         var eppCommander;
         var registrant, tech, admin, billing;

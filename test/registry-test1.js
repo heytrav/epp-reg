@@ -8,7 +8,7 @@ should = chai.should;
 
 var EppCommander = require('../lib/epp-commander.js');
 describe.skip('NZRS scenarios', function() {
-    var domain = ['iwmn', moment().unix(), 'test.co.nz'].join('-');
+    var domain = ['iwmn', moment().unix(), 'test.tld'].join('-');
     describe('create contacts and domain, then update domain with new registrant, tech contact and nameserver', function() {
         var eppCommander;
         var registrant, tech, admin, billing;

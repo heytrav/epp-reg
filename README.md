@@ -44,7 +44,9 @@ available.
 
 
 ```javascript
-eppCommander.checkDomain({domain: "test-domain.co.nz"})
+var EppCommander = require('../lib/epp-commander.js');
+var eppCommander = new EppCommander('registry-test1');
+eppCommander.checkDomain({domain: "test-domain.tld"})
     .then(function(checkResult) {
         // first check for domain availability
         var isAvailable
@@ -153,20 +155,20 @@ that is being changed.
 See #Synopsis above for an idea how this works.
 
     node lib/create-domain.js -r registry1 \
-        --name test-6-iwmn.co.nz \
+        --name test-6-iwmn.tld \
         --registrant iwmn-1409280841 \
         --admin iwmn-1409280485 \
         --tech iwmn-1409280762  \
         --nameserver 'ns1.hexonet.net' \
         --nameserver 'ns2.hexonet.net' \
-        --nsobj 'ns.test-6-iwmn.co.nz;23.44.23.12' \ # Glue record!
+        --nsobj 'ns.test-6-iwmn.tld;23.44.23.12' \ # Glue record!
         --period 1  \
         --unit y
 
 
 Output:
 
-        Created domain:  test-6-iwmn.co.nz
+        Created domain:  test-6-iwmn.tld
         Expires:  2015-08-29T21:55:12+12:00
 
 or if there was an error (eg. the domain is already registered):
@@ -180,13 +182,13 @@ be entered multiple times.
 ## info-domain.js
 
 
-        node lib/info-domain.js -d test-4-iwmn.co.nz -r registry1
+        node lib/info-domain.js -d test-4-iwmn.tld -r registry1
 
 Output:
 ```javascript
 { 
   'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
-    'domain:name': 'test-4-iwmn.co.nz',
+    'domain:name': 'test-4-iwmn.tld',
     'domain:roid': 'd95928bbc4a0-DOM',
     'domain:status': { lang: 'en', s: 'ok' },
     'domain:ns': { 'domain:hostAttr': [Object] },
@@ -199,12 +201,12 @@ Output:
 ## update-domain.js
 
         node lib/update-domain.js -r registry1 \
-            -d test-4-iwmn.co.nz \
+            -d test-4-iwmn.tld \
             --admin iwmn-admin-1   \ # admincontact to add
             --admin iwmn-admin-2   \ # add another admin
             --remadmin  iwmn-1409280485 \ # admin to remove
             #IPv6 record
-            --nsobj 'ns1.trav-test-4-iwmn.co.nz;2001:0DB8:AC10:FE01::=v6' \
+            --nsobj 'ns1.trav-test-4-iwmn.tld;2001:0DB8:AC10:FE01::=v6' \
             --remns ns2.hexonet.net \ # nameserver to remove
             --registrant iwmn-12345 \ # new registrant
             --period 24  \# change to 24 month registration
@@ -223,7 +225,7 @@ Renew domain for a 2 month period:
 
 
         node lib/renew-domain.js -r registry1 \
-            -d test-5-iwmn.co.nz
+            -d test-5-iwmn.tld
             --expiration 2014-10-01
             --period 2
             --unit m
@@ -231,11 +233,11 @@ Renew domain for a 2 month period:
 ## delete-domain.js
 
 
-        node lib/delete-domain.js -r registry1  -d test-6-domain.co.nz
+        node lib/delete-domain.js -r registry1  -d test-6-domain.tld
 
 ## transfer-domain.js
 
-        node lib/transfer-domain.js -r registry2  -d test-6-domain.co.nz \
+        node lib/transfer-domain.js -r registry2  -d test-6-domain.tld \
             --op request --authinfo 6aWZpy5E
 
 **Note** that domain transfers are blocked for a period of 5 days following
@@ -254,7 +256,7 @@ Output:
         next message id:    0195iwmn-1409306037
         Poll msg:   Domain Create
         Received data:  { 'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
-        'domain:name': 'test-5-iwmn.co.nz',
+        'domain:name': 'test-5-iwmn.tld',
         'domain:roid': '3fd1074ac89c-DOM',
         'domain:status': { lang: 'en', s: 'ok' },
         'domain:registrant': 'iwmn-1409280841',
