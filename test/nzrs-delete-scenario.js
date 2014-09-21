@@ -12,13 +12,13 @@ describe('NZRS delete scenario', function() {
         var eppCommander;
         var registrant, tech, admin, billing;
         var registrantId, updateRegistrantId;
-        var techId = 'nzrs1tech',
-        billingId = 'nzrs1billing',
-        updateTechId = 'nzrs1tech2',
-        adminId = 'nzrs1admin';
+        var techId = 'registry1tech',
+        billingId = 'registry1billing',
+        updateTechId = 'registry1tech2',
+        adminId = 'registry1admin';
 
         beforeEach(function() {
-            eppCommander = new EppCommander('nzrs-test1');
+            eppCommander = new EppCommander('registry-test1');
         });
         it('should check for and then create a regular contact', function(done) {
             this.timeout(10000);

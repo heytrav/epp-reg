@@ -13,13 +13,13 @@ describe.skip('NZRS scenarios', function() {
         var eppCommander;
         var registrant, tech, admin, billing;
         var registrantId, updateRegistrantId;
-        var techId = 'nzrs1tech',
-        billingId = 'nzrs1billing',
-        updateTechId = 'nzrs1tech2',
-        adminId = 'nzrs1admin';
+        var techId = 'registry1tech',
+        billingId = 'registry1billing',
+        updateTechId = 'registry1tech2',
+        adminId = 'registry1admin';
 
         beforeEach(function() {
-            eppCommander = new EppCommander('nzrs-test1');
+            eppCommander = new EppCommander('registry-test1');
         });
         it('should check for and then create a regular contact', function(done) {
             this.timeout(10000);
@@ -413,7 +413,7 @@ describe.skip('NZRS scenarios', function() {
     describe.skip('domain operations accreditation 2', function(){
         var eppCommander2;
         beforeEach(function(){
-            eppCommander2 = new EppCommander('nzrs-test2');
+            eppCommander2 = new EppCommander('registry-test2');
         });
         it('should initiate a domain transfer', function(done) {
             var transferData = {

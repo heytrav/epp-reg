@@ -9,7 +9,7 @@ describe('NZRS poll', function() {
     var eppCommander;
     var msgId;
     before(function() {
-        eppCommander = new EppCommander('nzrs-test1');
+        eppCommander = new EppCommander('registry-test1');
     });
     it('should execute a poll', function(done) {
         this.timeout(10000);

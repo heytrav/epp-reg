@@ -11,7 +11,7 @@ describe.skip('NZRS domain transfer', function () {
     describe('get domain info', function () {
         var eppCommander;
         before(function() {
-            eppCommander = new EppCommander('nzrs-test1');
+            eppCommander = new EppCommander('registry-test1');
         });
         it('should get info for a domain', function(done) {
             eppCommander.infoDomain({"domain": domain, "authInfo": authInfo}).then(
@@ -33,11 +33,10 @@ describe.skip('NZRS domain transfer', function () {
     describe.skip('as foreign registrar', function() {
         var eppCommander;
         before(function() {
-            eppCommander = new EppCommander('nzrs-test2');
+            eppCommander = new EppCommander('registry-test2');
         });
         it.skip('should request a domain transfer', function() {
             
         });
     });
-
 });
