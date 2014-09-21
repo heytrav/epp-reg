@@ -1,0 +1,15 @@
+{
+    "rabbitmq": {
+        "connection": {
+            "host": "<rabbitmq host>",
+            "port": 5672,
+            "login": "<login>",
+            "password": "<password>",
+            "noDelay": true,
+            "vhost": "<vhost>",
+            "ssl": {
+                "enabled": false
+            }
+        }
+    }
+}
