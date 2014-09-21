@@ -11,7 +11,7 @@ var EppCommander = require('../lib/epp-commander.js');
 describe("Contact creation", function() {
     var eppCommander;
     before(function() {
-        eppCommander = new EppCommander('hexonet-test1');
+        eppCommander = new EppCommander('registry-test2');
     });
     it('should create a contact', function(done) {
         var contactId = ['iwmn', moment().unix()].join('-');

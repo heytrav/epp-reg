@@ -18,7 +18,7 @@ describe('Hexonet scenarios', function() {
     var domain = ['iwmn', moment().unix(), 'test.com'].join('-');
 
 	beforeEach(function() {
-		eppCommander = new EppCommander('hexonet-test1');
+		eppCommander = new EppCommander('registry-test2');
 	});
 	it('should check for and then create a regular contact', function(done) {
 		this.timeout(10000);
