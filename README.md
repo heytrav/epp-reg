@@ -67,16 +67,16 @@ eppCommander.checkDomain({domain: "test-domain.tld"})
         // block
         return eppCommander.createDomain(
         {
-            domain: "test-domain.com",
+            domain: "test-domain.tld",
             registrant: "iwmn-12345",
             period: {"value": 1, "unit": "y"},
             ns: [
-                "ns1.hexonet.net",
-                "ns2.hexonet.net"
+                "ns1.host.net",
+                "ns2.host.net"
             ],
             contact:[
-                {admin: "iwmn-admin-1"},
-                {tech: "iwmn-tech-1"}
+                {admin: "my-admin-1"},
+                {tech: "my-tech-1"}
             ]
         });
     })
@@ -90,23 +90,10 @@ eppCommander.checkDomain({domain: "test-domain.tld"})
     });
 ```
 
-Note that all commands return a *promise* object. That means that it is
-possible to chain commands together. Each successful block will be passed to
-the next `then` block. If an exception is thrown in the chain somewhere it
-will go directly to the `fail` block. Think of this as an async equivalent of a
-`try/catch` block.
-
-
-
-
-# Testing
-
-    npm test
-
-*Note* as the implementation requires an up and running
-[nodepp](https://github.com/heytrav/epp-reg.git), which itself must be
-configured with login information to specific, the tests in this app
-will likely fail. Some have been intentionally set to *skip* for this reason. 
+Note that all commands return a *promise* object makint it possible to chain
+commands together. Each successful block will be passed to the next `then`
+block. If an exception is thrown in the chain somewhere execution will go directly to
+the `fail` block. Think of this as an async equivalent of a `try/catch` block.
 
 
 # Command line scripts
@@ -255,19 +242,26 @@ Output:
         Remaining messages:   2
         next message id:    0195iwmn-1409306037
         Poll msg:   Domain Create
-        Received data:  { 'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
-        'domain:name': 'test-5-iwmn.tld',
-        'domain:roid': '3fd1074ac89c-DOM',
-        'domain:status': { lang: 'en', s: 'ok' },
-        'domain:registrant': 'iwmn-1409280841',
-        'domain:contact':
-        [ { type: 'admin', '$t': 'iwmn-1409280485' },
-            { type: 'tech', '$t': 'iwmn-1409280762' } ],
-        'domain:ns': { 'domain:hostAttr': [ [Object], [Object] ] },
-        'domain:clID': 195,
-        'domain:crDate': '2014-08-29T21:53:57+12:00',
-        'domain:exDate': '2015-08-29T21:53:57+12:00',
-        'domain:authInfo': { 'domain:pw': 'FMMhQJHZ' } }
+        Received data:  ```javascript
+        { 
+            'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
+          'domain:name': 'test-5-iwmn.tld',
+          'domain:roid': '3fd1074ac89c-DOM',
+          'domain:status': { lang: 'en', s: 'ok' },
+          'domain:registrant': 'iwmn-1409280841',
+          'domain:contact':
+          [ 
+            { type: 'admin', '$t': 'iwmn-1409280485' },
+            { type: 'tech', '$t': 'iwmn-1409280762' } 
+          ],
+          'domain:ns': { 'domain:hostAttr': [ [Object], [Object] ] },
+          'domain:clID': 195,
+          'domain:crDate': '2014-08-29T21:53:57+12:00',
+          'domain:exDate': '2015-08-29T21:53:57+12:00',
+          'domain:authInfo': { 'domain:pw': 'FMMhQJHZ' } 
+        }
+       ``` 
+        
 
 To dequeue that message:
 
@@ -276,4 +270,14 @@ To dequeue that message:
 Output:
 
         Remaining messages:   1
+
+# Testing
+
+    npm test
+
+*Note* as the implementation requires an up and running
+[nodepp](https://github.com/heytrav/epp-reg.git), which itself must be
+configured with login information to a specific registry, the tests in this app
+will likely fail. Some have been intentionally set to *skip* for this reason. 
+
 
