@@ -6,9 +6,9 @@ var moment = require('moment');
 var expect = chai.expect,
 should = chai.should;
 
-var EppCommander = require('../lib/epp-commander.js');
 
-describe("Contact creation", function() {
+describe.skip("Contact creation", function() {
+    var EppCommander = require('../lib/epp-commander.js');
     var eppCommander;
     before(function() {
         eppCommander = new EppCommander('registry-test2');

@@ -6,8 +6,8 @@ var moment = require('moment');
 var expect = chai.expect,
 should = chai.should;
 
-var EppCommander = require('../lib/epp-commander.js');
 describe('Hexonet scenarios', function() {
+    var EppCommander = require('../lib/epp-commander.js');
 	var eppCommander;
 	var registrant, tech, admin, billing;
 	var registrantId, updateRegistrantId;

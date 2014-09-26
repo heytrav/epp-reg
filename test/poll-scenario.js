@@ -4,8 +4,8 @@ var moment = require('moment');
 var expect = chai.expect,
 should = chai.should;
 
-var EppCommander = require('../lib/epp-commander.js');
-describe('NZRS poll', function() {
+describe.skip('NZRS poll', function() {
+    var EppCommander = require('../lib/epp-commander.js');
     var eppCommander;
     var msgId;
     before(function() {

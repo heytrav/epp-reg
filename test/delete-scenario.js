@@ -5,9 +5,9 @@ var moment = require('moment');
 var expect = chai.expect,
 should = chai.should;
 
-var EppCommander = require('../lib/epp-commander.js');
-describe('NZRS delete scenario', function() {
+describe.skip('NZRS delete scenario', function() {
     var domain = ['iwmn', moment().unix(), 'test.tld'].join('-');
+    var EppCommander = require('../lib/epp-commander.js');
     describe.skip('create a domain, then delete it', function() {
         var eppCommander;
         var registrant, tech, admin, billing;

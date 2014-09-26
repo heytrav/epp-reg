@@ -6,8 +6,8 @@ var moment = require('moment');
 var expect = chai.expect,
 should = chai.should;
 
-var EppCommander = require('../lib/epp-commander.js');
 describe.skip('NZRS scenarios', function() {
+    var EppCommander = require('../lib/epp-commander.js');
     var domain = ['iwmn', moment().unix(), 'test.tld'].join('-');
     describe('create contacts and domain, then update domain with new registrant, tech contact and nameserver', function() {
         var eppCommander;
