@@ -1,7 +1,7 @@
 {
   "name": "epp-reg",
-  "version": "0.0.1",
-  "description": "Prototype for EPP registration backend to help with accreditation testing.",
+  "version": "0.5.0",
+  "description": "Client script(s) for node-epp",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/*.js"
