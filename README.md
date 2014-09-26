@@ -1,20 +1,20 @@
 # epp-reg
 
-A client for [nodepp](https://github.com/heytrav/nodepp)
+A client for [node-epp](https://github.com/heytrav/nodepp)
 
 # Description
 
 This provides a helper class as well as some command line scripts that
-interact with [nodepp](https://github.com/heytrav/nodepp).
+interact with [node-epp](https://github.com/heytrav/nodepp).
 
-Please see [nodepp](https://github.com/heytrav/nodepp) for a detailed description of
+Please see [node-epp](https://github.com/heytrav/nodepp) for a detailed description of
 commands.
 
 
 # Dependencies
 
-1.  An instance of RabbitMQ. 
-2.  `nodepp` installed, running and connected to RabbitMQ.
+1.  An instance of RabbitMQ.
+2.  [node-epp](https://github.com/heytrav/nodepp) installed, running and connected to RabbitMQ.
 
 
 
@@ -169,31 +169,31 @@ be entered multiple times.
 ## info-domain.js
 
 
-        node lib/info-domain.js -d test-4-iwmn.tld -r registry1
+        node lib/info-domain.js -d test-some-domain.tld -r registry1
 
 Output:
 ```javascript
-{ 
+{
   'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
-    'domain:name': 'test-4-iwmn.tld',
+    'domain:name': 'test-some-domain.tld',
     'domain:roid': 'd95928bbc4a0-DOM',
     'domain:status': { lang: 'en', s: 'ok' },
     'domain:ns': { 'domain:hostAttr': [Object] },
     'domain:clID': {},
     'domain:crDate': '2014-08-29T21:51:34+12:00',
-    'domain:exDate': '2015-08-29T21:51:34+12:00' 
-} 
+    'domain:exDate': '2015-08-29T21:51:34+12:00'
+}
 ```
 
 ## update-domain.js
 
         node lib/update-domain.js -r registry1 \
-            -d test-4-iwmn.tld \
+            -d test-some-domain.tld \
             --admin iwmn-admin-1   \ # admincontact to add
             --admin iwmn-admin-2   \ # add another admin
             --remadmin  iwmn-1409280485 \ # admin to remove
             #IPv6 record
-            --nsobj 'ns1.trav-test-4-iwmn.tld;2001:0DB8:AC10:FE01::=v6' \
+            --nsobj 'ns1.trav-test-some-domain.tld;2001:0DB8:AC10:FE01::=v6' \
             --remns ns2.hexonet.net \ # nameserver to remove
             --registrant iwmn-12345 \ # new registrant
             --period 24  \# change to 24 month registration
@@ -242,24 +242,24 @@ Output:
         Remaining messages:   2
         next message id:    0195iwmn-1409306037
         Poll msg:   Domain Create
-        Received data: { 
+        Received data: {
             'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
           'domain:name': 'test-5-iwmn.tld',
           'domain:roid': '3fd1074ac89c-DOM',
           'domain:status': { lang: 'en', s: 'ok' },
           'domain:registrant': 'iwmn-1409280841',
           'domain:contact':
-          [ 
+          [
             { type: 'admin', '$t': 'iwmn-1409280485' },
-            { type: 'tech', '$t': 'iwmn-1409280762' } 
+            { type: 'tech', '$t': 'iwmn-1409280762' }
           ],
           'domain:ns': { 'domain:hostAttr': [ [Object], [Object] ] },
-          'domain:clID': 195,
+          'domain:clID': my-registrar,
           'domain:crDate': '2014-08-29T21:53:57+12:00',
           'domain:exDate': '2015-08-29T21:53:57+12:00',
-          'domain:authInfo': { 'domain:pw': 'FMMhQJHZ' } 
+          'domain:authInfo': { 'domain:pw': 'FMMhQJHZ' }
         }
-        
+
 
 To dequeue that message:
 
@@ -276,6 +276,6 @@ Output:
 *Note* as the implementation requires an up and running
 [nodepp](https://github.com/heytrav/epp-reg.git), which itself must be
 configured with login information to a specific registry, the tests in this app
-will likely fail. Some have been intentionally set to *skip* for this reason. 
+will not work. They have been intentionally set to *skip* for this reason.
 
 
