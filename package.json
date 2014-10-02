@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ideegeo/epp-reg.git"
+    "url": "git@github.com:heytrav/epp-reg.git"
   },
   "keywords": [
     "epp",
@@ -20,9 +20,9 @@
   "author": "William Travis Holton",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ideegeo/epp-reg/issues"
+    "url": "https://github.com/heytrav/epp-reg/issues"
   },
-  "homepage": "https://github.com/ideegeo/epp-reg",
+  "homepage": "https://github.com/heytrav/epp-reg",
   "dependencies": {
     "amqp-as-promised": "^0.1.4",
     "commander": "^2.3.0",
