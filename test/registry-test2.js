@@ -27,7 +27,7 @@ describe.skip('Hexonet scenarios', function() {
 			"id": registrantId,
 			"voice": "+1.9405551234",
 			"fax": "+1.9405551233",
-			"email": "test+homer@ideegeo.com",
+			"email": "test+homer@randommail.com",
 			"authInfo": {
 				"pw": "xyz123"
 			},
@@ -154,7 +154,7 @@ describe.skip('Hexonet scenarios', function() {
 			"id": updateRegistrantId,
 			"voice": "+1.9405551234",
 			"fax": "+1.9405551233",
-			"email": "test+marge@ideegeo.com",
+			"email": "test+marge@randommail.com",
 			"authInfo": {
 				"pw": "xyz123"
 			},

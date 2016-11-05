@@ -29,7 +29,7 @@ describe.skip('NZRS scenarios', function() {
                 "id": registrantId,
                 "voice": "+1.9405551234",
                 "fax": "+1.9405551233",
-                "email": "test+homer@ideegeo.com",
+                "email": "test+homer@randommail.com",
                 "authInfo": {
                     "pw": "xyz123"
                 },
@@ -82,7 +82,7 @@ describe.skip('NZRS scenarios', function() {
                 "id": techId,
                 "voice": "+1.9405551234",
                 "fax": "+1.9405551233",
-                "email": "test+tech@ideegeo.com",
+                "email": "test+tech@randommail.com",
                 "authInfo": {
                     "pw": "xyz123"
                 },
@@ -145,7 +145,7 @@ describe.skip('NZRS scenarios', function() {
                 "id": adminId,
                 "voice": "+1.9405551234",
                 "fax": "+1.9405551233",
-                "email": "test+admin@ideegeo.com",
+                "email": "test+admin@randommail.com",
                 "authInfo": {
                     "pw": "xyz123"
                 },
@@ -253,7 +253,7 @@ describe.skip('NZRS scenarios', function() {
                 "id": updateRegistrantId,
                 "voice": "+1.9405551234",
                 "fax": "+1.9405551233",
-                "email": "test+marge@ideegeo.com",
+                "email": "test+marge@randommail.com",
                 "authInfo": {
                     "pw": "xyz123"
                 },
@@ -299,7 +299,7 @@ describe.skip('NZRS scenarios', function() {
                 "id": updateTechId,
                 "voice": "+1.9405551234",
                 "fax": "+1.9405551233",
-                "email": "test+billing@ideegeo.com",
+                "email": "test+billing@randommail.com",
                 "authInfo": {
                     "pw": "xyz123"
                 },

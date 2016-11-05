@@ -28,7 +28,7 @@ describe.skip('NZRS delete scenario', function() {
                 "id": registrantId,
                 "voice": "+1.9405551234",
                 "fax": "+1.9405551233",
-                "email": "test+homer@ideegeo.com",
+                "email": "test+homer@randommail.com",
                 "authInfo": {
                     "pw": "xyz123"
                 },

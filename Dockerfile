@@ -1,6 +1,6 @@
 
 FROM ubuntu:trusty
-MAINTAINER Travis Holton <travis@ideegeo.com>
+MAINTAINER Travis Holton <wtholton at Gee mail dot com>
 
 WORKDIR /root
 
