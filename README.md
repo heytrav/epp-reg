@@ -67,7 +67,7 @@ eppCommander.checkDomain({domain: "test-domain.tld"})
         return eppCommander.createDomain(
         {
             domain: "test-domain.tld",
-            registrant: "iwmn-12345",
+            registrant: "myreg-12345",
             period: {"value": 1, "unit": "y"},
             ns: [
                 "ns1.host.net",
@@ -105,7 +105,7 @@ far:
 ## create-contact.js
 
       node lib/create-contact.js -r registry1 \
-            --id 'P-43994' \ # optional. will default to iwmn-<unix timestamp>
+            --id 'P-43994' \ # optional. will default to myreg-<unix timestamp>
             --name 'Joe User' \
             --email joeuser@null.com \
             --street '742 Evergreen Terrace' \
@@ -119,7 +119,7 @@ far:
 
 ## update-contact.js
 
-        node lib/update-contact.js -r registry1 -i iwmn-tech-1 \
+        node lib/update-contact.js -r registry1 -i myreg-tech-1 \
             --telephone '+64.1234567'
             --street '167 Vivian' \
             --street 'Apt. b' \
@@ -135,27 +135,27 @@ that is being changed.
 
 ## delete-contact.js
 
-        node lib/delete-contact.js -r registry1 --id iwmn-tech-3
+        node lib/delete-contact.js -r registry1 --id myreg-tech-3
 
 ## create-domain.js
 
 See #Synopsis above for an idea how this works.
 
     node lib/create-domain.js -r registry1 \
-        --name test-6-iwmn.tld \
-        --registrant iwmn-1409280841 \
-        --admin iwmn-1409280485 \
-        --tech iwmn-1409280762  \
-        --nameserver 'ns1.hexonet.net' \
-        --nameserver 'ns2.hexonet.net' \
-        --nsobj 'ns.test-6-iwmn.tld;23.44.23.12' \ # Glue record!
+        --name test-6-myreg.tld \
+        --registrant myreg-1409280841 \
+        --admin myreg-1409280485 \
+        --tech myreg-1409280762  \
+        --nameserver 'ns1.dnshost.net' \
+        --nameserver 'ns2.dnshost.net' \
+        --nsobj 'ns.test-6-myreg.tld;23.44.23.12' \ # Glue record!
         --period 1  \
         --unit y
 
 
 Output:
 
-        Created domain:  test-6-iwmn.tld
+        Created domain:  test-6-myreg.tld
         Expires:  2015-08-29T21:55:12+12:00
 
 or if there was an error (eg. the domain is already registered):
@@ -189,13 +189,13 @@ Output:
 
         node lib/update-domain.js -r registry1 \
             -d test-some-domain.tld \
-            --admin iwmn-admin-1   \ # admincontact to add
-            --admin iwmn-admin-2   \ # add another admin
-            --remadmin  iwmn-1409280485 \ # admin to remove
+            --admin myreg-admin-1   \ # admincontact to add
+            --admin myreg-admin-2   \ # add another admin
+            --remadmin  myreg-1409280485 \ # admin to remove
             #IPv6 record
             --nsobj 'ns1.trav-test-some-domain.tld;2001:0DB8:AC10:FE01::=v6' \
-            --remns ns2.hexonet.net \ # nameserver to remove
-            --registrant iwmn-12345 \ # new registrant
+            --remns ns2.dnshost.net \ # nameserver to remove
+            --registrant myreg-12345 \ # new registrant
             --period 24  \# change to 24 month registration
             --status 'clientHold:Payment Due' \ # add a status
             --remstatus 'transferBlock' \ # remove a status
@@ -212,7 +212,7 @@ Renew domain for a 2 month period:
 
 
         node lib/renew-domain.js -r registry1 \
-            -d test-5-iwmn.tld
+            -d test-5-myreg.tld
             --expiration 2014-10-01
             --period 2
             --unit m
@@ -240,18 +240,18 @@ nature of these messages depends on the registry and can vary wildly.
 Output:
 
         Remaining messages:   2
-        next message id:    0195iwmn-1409306037
+        next message id:    0195myreg-1409306037
         Poll msg:   Domain Create
         Received data: {
             'xmlns:domain': 'urn:ietf:params:xml:ns:domain-1.0',
-          'domain:name': 'test-5-iwmn.tld',
+          'domain:name': 'test-5-myreg.tld',
           'domain:roid': '3fd1074ac89c-DOM',
           'domain:status': { lang: 'en', s: 'ok' },
-          'domain:registrant': 'iwmn-1409280841',
+          'domain:registrant': 'myreg-1409280841',
           'domain:contact':
           [
-            { type: 'admin', '$t': 'iwmn-1409280485' },
-            { type: 'tech', '$t': 'iwmn-1409280762' }
+            { type: 'admin', '$t': 'myreg-1409280485' },
+            { type: 'tech', '$t': 'myreg-1409280762' }
           ],
           'domain:ns': { 'domain:hostAttr': [ [Object], [Object] ] },
           'domain:clID': my-registrar,
@@ -263,7 +263,7 @@ Output:
 
 To dequeue that message:
 
-        node lib/poll-cli.js -r registry1 -i 0195iwmn-1409306037
+        node lib/poll-cli.js -r registry1 -i 0195myreg-1409306037
 
 Output:
 

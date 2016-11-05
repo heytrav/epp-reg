@@ -11,18 +11,18 @@ describe.skip('Hexonet scenarios', function() {
 	var eppCommander;
 	var registrant, tech, admin, billing;
 	var registrantId, updateRegistrantId;
-	var techId = 'iwmn-hex1-tech',
-	billingId = 'iwmn-hex1-billing',
-    updateBillingId = 'iwmn-hex1-billing2',
-	adminId = 'iwmn-hex1-admin';
-    var domain = ['iwmn', moment().unix(), 'test.com'].join('-');
+	var techId = 'myreg-hex1-tech',
+	billingId = 'myreg-hex1-billing',
+    updateBillingId = 'myreg-hex1-billing2',
+	adminId = 'myreg-hex1-admin';
+    var domain = ['myreg', moment().unix(), 'test.com'].join('-');
 
 	beforeEach(function() {
 		eppCommander = new EppCommander('registry-test2');
 	});
 	it('should check for and then create a regular contact', function(done) {
 		this.timeout(10000);
-        registrantId = ['iwmn', moment().unix()].join('-');
+        registrantId = ['myreg', moment().unix()].join('-');
 		var contactData = {
 			"id": registrantId,
 			"voice": "+1.9405551234",
@@ -125,7 +125,7 @@ describe.skip('Hexonet scenarios', function() {
                     "unit": "y",
                     "value": 1
                 },
-                "ns": ["ns1.hexonet.net", "ns2.hexonet.net", "ns3.hexonet.net"],
+                "ns": ["ns1.dnshost.net", "ns2.dnshost.net", "ns3.dnshost.net"],
                 "registrant":registrantId,
                 "contact": [
                     { "admin": adminId },
@@ -149,7 +149,7 @@ describe.skip('Hexonet scenarios', function() {
 
 	it('should check for and then create a different contact', function(done) {
 		this.timeout(10000);
-		updateRegistrantId = ['iwmn', moment().unix()].join('-');
+		updateRegistrantId = ['myreg', moment().unix()].join('-');
 		var contactData = {
 			"id": updateRegistrantId,
 			"voice": "+1.9405551234",
@@ -217,7 +217,7 @@ describe.skip('Hexonet scenarios', function() {
             },
             "rem": {
                 "contact": [ {"billing": billingId} ],
-                "ns": ["ns2.hexonet.net"]
+                "ns": ["ns2.dnshost.net"]
             },
             "add":{
                 "contact": [{"billing": updateBillingId}]

@@ -14,7 +14,7 @@ describe.skip("Contact creation", function() {
         eppCommander = new EppCommander('registry-test2');
     });
     it('should create a contact', function(done) {
-        var contactId = ['iwmn', moment().unix()].join('-');
+        var contactId = ['myreg', moment().unix()].join('-');
 
         var contactData = {
             "id": contactId,
@@ -59,7 +59,7 @@ describe.skip("Contact creation", function() {
     });
 
     it('should get a failed create contact error', function(done) {
-        var contactId = ['iwmn', moment().unix()].join('-');
+        var contactId = ['myreg', moment().unix()].join('-');
 
         var contactData = {
             // bogus id that already exists. We just want the registry to

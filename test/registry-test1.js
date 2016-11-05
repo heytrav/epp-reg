@@ -8,7 +8,7 @@ should = chai.should;
 
 describe.skip('NZRS scenarios', function() {
     var EppCommander = require('../lib/epp-commander.js');
-    var domain = ['iwmn', moment().unix(), 'test.tld'].join('-');
+    var domain = ['myreg', moment().unix(), 'test.tld'].join('-');
     describe('create contacts and domain, then update domain with new registrant, tech contact and nameserver', function() {
         var eppCommander;
         var registrant, tech, admin, billing;
@@ -23,7 +23,7 @@ describe.skip('NZRS scenarios', function() {
         });
         it('should check for and then create a regular contact', function(done) {
             this.timeout(10000);
-            registrantId = ['iwmn', moment().unix()].join('');
+            registrantId = ['myreg', moment().unix()].join('');
             // Note!! "org" field not supported!
             var contactData = {
                 "id": registrantId,
@@ -214,10 +214,10 @@ describe.skip('NZRS scenarios', function() {
                         "value": 1
                     },
                     "ns": [{
-                        "host": "ns1.hexonet.net"
+                        "host": "ns1.dnshost.net"
                     },
                     {
-                        "host": "ns2.hexonet.net"
+                        "host": "ns2.dnshost.net"
                     }],
                     "registrant": registrantId,
                     "contact": [{
@@ -248,7 +248,7 @@ describe.skip('NZRS scenarios', function() {
         });
         it('should check for and then create a different contact', function(done) {
             this.timeout(10000);
-            updateRegistrantId = ['iwmn', moment().unix()].join('-');
+            updateRegistrantId = ['myreg', moment().unix()].join('-');
             var contactData = {
                 "id": updateRegistrantId,
                 "voice": "+1.9405551234",
@@ -366,7 +366,7 @@ describe.skip('NZRS scenarios', function() {
                         "tech": techId
                     }],
                     "ns": [{
-                        "host": "ns2.hexonet.net"
+                        "host": "ns2.dnshost.net"
                     }]
                 },
                 "add": {
@@ -374,7 +374,7 @@ describe.skip('NZRS scenarios', function() {
                         "tech": updateTechId
                     }],
                     "ns": [{
-                        "host": "ns3.hexonet.net"
+                        "host": "ns3.dnshost.net"
                     }]
                 }
             };

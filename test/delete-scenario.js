@@ -6,7 +6,7 @@ var expect = chai.expect,
 should = chai.should;
 
 describe.skip('NZRS delete scenario', function() {
-    var domain = ['iwmn', moment().unix(), 'test.tld'].join('-');
+    var domain = ['myreg', moment().unix(), 'test.tld'].join('-');
     var EppCommander = require('../lib/epp-commander.js');
     describe.skip('create a domain, then delete it', function() {
         var eppCommander;
@@ -22,7 +22,7 @@ describe.skip('NZRS delete scenario', function() {
         });
         it('should check for and then create a regular contact', function(done) {
             this.timeout(10000);
-            registrantId = ['iwmn', moment().unix()].join('');
+            registrantId = ['myreg', moment().unix()].join('');
             // Note!! "org" field not supported!
             var contactData = {
                 "id": registrantId,
@@ -119,10 +119,10 @@ describe.skip('NZRS delete scenario', function() {
                         "value": 1
                     },
                     "ns": [{
-                        "host": "ns1.hexonet.net"
+                        "host": "ns1.dnshost.net"
                     },
                     {
-                        "host": "ns2.hexonet.net"
+                        "host": "ns2.dnshost.net"
                     }],
                     "registrant": registrantId,
                     "contact": [{
